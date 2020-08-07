@@ -17,6 +17,7 @@
         <td>Заголовок</td>
         <td>Превью текст новости</td>
         <td>Дата создания</td>
+        <td>Возможность</td>
     </tr>
     @foreach($news as $new)
         <tr>
@@ -24,6 +25,10 @@
             <td>{{ $new->title }}</td>
             <td>{{ $new->preview_text }}</td>
             <td>{{ $new->created_at }}</td>
+            <td>
+                <a href="{{ route('delete-new', $new->id) }}"><button class="btn btn-danger">Удалить</button></a>
+                <a href=""><button class="btn btn-primary">Изменить</button></a>
+            </td>
         </tr>
     @endforeach
     </table>
@@ -41,7 +46,10 @@
             <td>{{ $image->id }}</td>
             <td>{{ $image->name }}</td>
             <td>{{ $image->path }}</td>
-            <td>{{ $image->create_at }}</td>
+            <td>{{ $image->created_at }}</td>
+            <td>
+                <a href="{{ route('delete-img', $image->id) }}"><button class="btn btn-danger">Удалить</button></a>
+            </td>
         </tr>
     @endforeach
     </table>

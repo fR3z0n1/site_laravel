@@ -94,6 +94,10 @@ body {
   padding: 35px 30px 10px;
 }
 
+.tm-main-content.tm-gallery-container img {
+  max-width: 400px;
+}
+
 .tm-sidebar {
   float: none;
   width: 100%;

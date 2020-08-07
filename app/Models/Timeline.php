@@ -8,8 +8,5 @@ class Timeline extends Model
 {
     //
     protected $table = 'news';
-    // protected $fillable = [
-    //     'path_img', 'title', 'preview_text',
-    //     'text',
-    // ];
+    
 }

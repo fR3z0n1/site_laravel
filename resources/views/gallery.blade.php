@@ -3,15 +3,17 @@
 
 @section('content')
 
+<div class="tm-main-content tm-gallery-container">  
+    <div class="grid">                  
 @foreach($images as $img)
-<div class="tm-main-content tm-gallery-container">                    
-    <div class="grid">                                                    
+                                                        
         <div class="grid-item">
-            <img src="{{ $img->path }}" alt="Image">
-        </div>
-    </div>                    
-</div> 
+            <img src="{{ $img->path }}" alt="{{ $img->name }}">
+        </div>                   
+
 @endforeach
+    </div> 
+</div>
 
 <!-- <div class="tm-main-content tm-gallery-container">                    
     <div class="grid">                                                    
@@ -42,27 +44,27 @@
 
 <script>  
 
-$(document).ready(function(){
+    $(document).ready(function(){
 
-    // init Masonry
-    // https://codepen.io/craigwheeler/pen/MYjBga
-    var $grid = $('.grid').masonry({
-        
-        // set itemSelector so .grid-sizer is not used in layout
-        // itemSelector: '.grid-item',
-        // use element for option
-        // columnWidth: '.grid-sizer',
-        // percentPosition: true
+        // init Masonry
+        // https://codepen.io/craigwheeler/pen/MYjBga
+        var $grid = $('.grid').masonry({
+            
+            // set itemSelector so .grid-sizer is not used in layout
+            // itemSelector: '.grid-item',
+            // use element for option
+            // columnWidth: '.grid-sizer',
+            // percentPosition: true
 
-        itemSelector: '.grid-item',
-        isFitWidth: true,
-        columnWidth: 1
+            itemSelector: '.grid-item',
+            isFitWidth: true,
+            columnWidth: 1
+        });
+        // layout Masonry after each image loads
+        $grid.imagesLoaded().progress( function() {
+            $grid.masonry('layout');
+        });              
     });
-    // layout Masonry after each image loads
-    $grid.imagesLoaded().progress( function() {
-        $grid.masonry('layout');
-    });              
-});
 
 </script>
 

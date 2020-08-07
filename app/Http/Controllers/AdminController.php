@@ -7,6 +7,7 @@ use App\Models\Admin;
 use App\Models\Timeline;
 use App\Models\Image;
 use App\Http\Requests\AdminRequest;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -35,6 +36,7 @@ class AdminController extends Controller
 
         $path = $data->file('img_new')->store('img_gallery', 'mydisk');
         $path_img = 'img/' . $path;
+        dd( $data->file('img_new'));
         $name = trim(stristr($path, '/', false), '/');
         $img = new Image();
         $img->name = $name;
@@ -43,10 +45,11 @@ class AdminController extends Controller
         
         return redirect()->route('admin-panel')->with('success','Картинка в галерею успешно добавлена');
     }
-    public function deleteNews() {
-        
+    public function deleteNew($id) {
+        $new = new Timeline();
+        $new->find($id)->delete();
+        return redirect()->route('admin-panel')->with('success','Новость удалена');
     }
-    public function deleteImg() {
-        
+    public function deleteImg($id) {
     }
 }

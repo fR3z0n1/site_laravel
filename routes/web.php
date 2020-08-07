@@ -15,15 +15,13 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+ 
 Route::get('/', function () {
     return view('gallery');
 })->name('/');
 
 // Route::get('/gallery', 'ImageController@getAllPathImages')->name('gallery-page');
-Route::get('/gallery', function() {
-    
-})->name('gallery-page');
+Route::get('/gallery', 'ImageController@getAllPathImages')->name('gallery-page');
 
 Route::get('/about', function () {
     return view('about');
@@ -51,5 +49,5 @@ Route::get('/admin/add/img', function() { return view('admin.addImg'); })->name(
 Route::post('/admin/add/new', 'AdminController@addNews')->name('add-new');
 Route::post('/admin/add/img', 'AdminController@addImg')->name('add-img');
 
-// Route::get('/admin/delete/new/{id}', 'AdminController@deleteNews')->name('delete-news');
-// Route::get('/admin/delete/img/{id}', 'AdminController@deleteImg')->name('delete-img');
+Route::get('/admin/delete/new/{id}', 'AdminController@deleteNew')->name('delete-new');
+Route::get('/admin/delete/img/{id}', 'AdminController@deleteImg')->name('delete-img');
